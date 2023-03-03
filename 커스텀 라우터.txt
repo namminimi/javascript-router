@@ -1,0 +1,28 @@
+자바스크립트로 라우터 구현
+커스텀이벤트
+자바스크립트를 사용하면 이벤트 핸들러를 할당할수 있으며
+이벤트를 직접 만들수도 있습니다
+1. 이벤트 생성
+new CustomEvent("type",{detail:{전달객체}})     ===>이벤트객체 만듬
+-type: 이벤트의 타입을 나타내는 문자열
+-customEvent 두번째 인수엔 객체가 들어갈 수 있는데
+detail이라는 프로퍼티를 추가해 커스텀 이벤트 관련 정보를
+명시 정보를 이벤트에 전달할 수 있음
+
+2. 이벤트 호출
+dispatchEvent(커스텀 이벤트 객체)
+이벤트 객체를 생성한 다음 dispatchEvent(이벤트객체)를 통해서
+이벤트를 호출할 수 있음
+
+ex) new customEvent("customClick",
+{detail: {message: "hi"}}
+	)
+	  dispatchEvent(cuEvent)
+	  dispatchEvent(new customEvent("customClick",{
+		detail: {message: "hihi"}
+	}))
+
+3.이벤트 핸들링
+window.addEventListener("customClick", (e)=>{
+	console.log(e.detail.message)
+})

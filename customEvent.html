@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="divElem">커스텀 이벤트 객체에 대해 배워봅시다.</div>
+    <script>
+        
+         //const green = new CustomEvent('nameEvent', {  이벤트 객체를 따로만들어도되고
+            //detail: {name: "그린"}
+        //})
+        //const blue = new CustomEvent('nameEvent', {
+            //detail: {name: "블루"}
+        //}) 
+        //클릭이벤트지만 이름이 있을경우 알아서 해주는 이벤트
+        const red = new CustomEvent('nameEvent', {
+            detail: {name: "레드"}  //detail말고는 안됨 detail 속성이 있음 얘는 무엇을 전달할수있음
+        }) 
+        window.addEventListener("nameEvent",(event) => {
+            console.log(event.detail.name)
+            console.log(event)
+        })
+        setTimeout(()=>{
+            window.dispatchEvent(red)
+        },1000)
+        window.dispatchEvent ( new CustomEvent('nameEvent', {  //호출과 생성 둘다 같이 써도되구
+            detail: {name: "오렌지"}
+        }))
+        window.dispatchEvent ( new CustomEvent('nameEvent', {
+            detail: {name: "블루"}
+        }))
+    </script>
+</body>
+</html>
